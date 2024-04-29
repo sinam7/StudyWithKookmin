@@ -1,46 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-import {useEffect, useState} from "react";
+import Button from './components/ui/Button';
+import Input from "./components/ui/Input";
+import Card from "./components/ui/Card";
 
 function App() {
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        fetch("/showMe")
-            .then((res) => {
-                return res.json();
-            })
-            .then(function (result) {
-                setData(result)
-            });
-    }, [])
-
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-
-                {/*  TEST  */}
-                <ul>
-                    {data.map((v, idx) =>
-                        <li key={`${idx}-${v}`}>{v}</li>
-                    )}
-                </ul>
-
-            </header>
-        </div>
-    );
+  return (
+      <div>
+        <Button title={'로그인'}/>
+        <Input
+            placeholder='검색어를 입력하세요...'
+        />
+      <Button title={'검색'}/>
+      <Card title='테스트 제목' time='테스트 시간' tags={['Spring boot', 'React']}/>
+      </div>
+);
 }
 
 export default App;
