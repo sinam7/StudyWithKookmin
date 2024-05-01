@@ -1,20 +1,18 @@
 import React from 'react';
-import Tag from "./Tag";
 import styled from "styled-components";
+import data from "../config/data.json";
+import Card from "./Card";
 
 const Container = styled.div`
     display: inline-block;
 `
 
 export default function CardContainer(props) {
-    const {tags} = props;
 
     return (
         <Container>
-            {tags.map((tag, index) => {
-                return (
-                    <Tag key={index} value={tag}></Tag>
-                )
+            {data.map((card, index) => {
+                return <Card key={index} title={card.title} time={card.time} tags={card.tags}/>
             })}
         </Container>
     );

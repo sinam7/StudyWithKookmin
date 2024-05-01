@@ -1,8 +1,7 @@
 import React from 'react';
-import Tag from "./Tag";
 import styled from "styled-components";
 import {COLOR_BORDER_BLUE} from "../config/Constant";
-import CardContainer from "./CardContainer";
+import TagContainer from "./TagContainer";
 
 const Container = styled.div`
     display: flex;
@@ -21,6 +20,9 @@ const Title = styled.span`
     font-size: larger;
 `
 
+const Text = styled.span``
+
+
 
 export default function Card(props) {
     const {title, time, tags} = props
@@ -29,8 +31,8 @@ export default function Card(props) {
     return (
         <Container>
             <Title>{title}</Title>
-            <text>{time}</text>
-            <CardContainer tags={tags}/>
+            <Text>{time}</Text>
+            <TagContainer data={tags}/>
         </Container>
     )
 }
