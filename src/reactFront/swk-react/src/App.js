@@ -1,22 +1,26 @@
 import './App.css';
-import Button from './components/ui/Button';
-import Input from "./components/ui/Input";
-import CardContainer from "./components/ui/CardContainer";
-import Toolbar from "./components/ui/Toolbar";
+import {useEffect, useState} from "react";
+import {Navigate, Route, Routes} from "react-router-dom";
+import {getUserInfo} from "./components/api/getUserInfo";
+import MainPage from "./components/page/MainPage";
+import Login from "./components/page/Login";
 
-function App() {
+export default function App() {
+    const [isLogin, setIsLogin] = useState(false);
+
+    useEffect(() => {
+        const initLogin = async () => {
+            const name = await getUserInfo();
+            setIsLogin(!!name);
+        };
+        initLogin();
+    }, []);
+
     return (
-        <div>
-            <Toolbar>
-                <Button title={'로그인'}/>
-                <Input
-                    placeholder='검색어를 입력하세요...'
-                />
-                <Button title={'검색'}/>
-            </Toolbar>
-            <CardContainer/>
-        </div>
+        <Routes>
+            <Route index element={<Login isLogin={isLogin} setIsLogin={setIsLogin}/>}/>
+            <Route path="main" element={isLogin ? <MainPage isLogin={isLogin}/> : <Navigate to="/"/>}/>
+            {/*<Route path="/main" element={<MainPage isLogin={isLogin}/>}/>*/}
+        </Routes>
     );
 }
-
-export default App;
