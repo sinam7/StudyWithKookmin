@@ -10,6 +10,9 @@ export default function Nav() {
         <li>
           <Link to="/main">main</Link>
         </li>
+        <li>
+          <Link to="/write">write</Link>
+        </li>
       </ul>
     </nav>
   );

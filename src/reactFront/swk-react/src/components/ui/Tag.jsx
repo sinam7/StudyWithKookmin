@@ -13,14 +13,18 @@ const TagItem = styled.div`
     border-radius: 5px;
     color: black;
     font-size: 13px;
+    cursor: pointer;
 `
 
 const Text = styled.span``
 
 export default function Tag(props) {
-    const { value } = props;
+    const { value, onClick } = props;
+
 
     return (
-        <TagItem><Text>{value}</Text></TagItem>
+        <TagItem onClick={onClick}>
+            <Text>{value}</Text>
+        </TagItem>
     )
 };

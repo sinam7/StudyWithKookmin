@@ -8,6 +8,7 @@ import {getUserInfo} from "../api/getUserInfo";
 
 export default function MainPage(props) {
     const [isLogin, setIsLogin] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
         const initLogin = async () => {
@@ -22,8 +23,10 @@ export default function MainPage(props) {
                 {isLogin === false && <GoogleLogin title={'로그인'}/>}
                 <Input
                     placeholder='검색어를 입력하세요...'
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
                 />
-                <Button title={'검색'}/>
+                <Button name={'검색'}/>
             </Toolbar>
             <CardContainer/>
         </div>);

@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import styled from "styled-components";
 import {COLOR_BACKGROUND_BLUE, COLOR_BORDER_BLUE} from "../config/Constant";
 
@@ -12,9 +11,13 @@ const StyledInput = styled.input`
 `
 
 export default function Input(props) {
-    const { placeholder } = props;
-    const [value, setValue] = useState('')
-    const onChange = (e) => {setValue(e.target.value)}
+    const { id, placeholder, value, onChange, onKeyDown } = props;
 
-    return <StyledInput value={value} onChange={onChange} placeholder={placeholder}></StyledInput>
+    return <StyledInput
+        id={id}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        onKeyDown={onKeyDown}
+    ></StyledInput>
 }

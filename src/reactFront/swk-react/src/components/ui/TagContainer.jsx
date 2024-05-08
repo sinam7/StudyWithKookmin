@@ -7,13 +7,13 @@ const Container = styled.div`
 `
 
 export default function TagContainer(props) {
-    const {data} = props;
+    const {data, onClick} = props;
 
     return (
         <Container>
             {
                 data.map((tag, index) => {
-                        return <Tag key={index} value={tag}/>
+                        return <Tag key={index} value={tag} onClick={onClick}/>
                     }
                 )
             }
