@@ -22,7 +22,8 @@ export default function Login({ isLogin, setIsLogin }) {
 
   return (
     <div>
-      <h1>Goggle Login</h1>
+      <h1 style={{color:"green"}}>Study with Kookmin</h1>
+      <h2>Google Login</h2>
       <Nav />
       <GoogleLogin onGoogleSignIn={onGoogleSignIn} text="로그인" />
     </div>
