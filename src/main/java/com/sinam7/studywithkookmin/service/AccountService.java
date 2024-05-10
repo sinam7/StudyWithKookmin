@@ -9,10 +9,10 @@ import com.sinam7.studywithkookmin.config.JWTUtils;
 import com.sinam7.studywithkookmin.dto.IdTokenRequestDto;
 import com.sinam7.studywithkookmin.repository.AccountRepository;
 import com.sinam7.studywithkookmin.user.Account;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import jakarta.transaction.Transactional;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Collections;

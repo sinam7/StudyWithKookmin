@@ -3,6 +3,7 @@ package com.sinam7.studywithkookmin.controller;
 import com.google.common.net.HttpHeaders;
 import com.sinam7.studywithkookmin.dto.IdTokenRequestDto;
 import com.sinam7.studywithkookmin.service.AccountService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
@@ -10,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/v1/oauth")
