@@ -1,8 +1,9 @@
 export const postPageWrite = async (pageWriteForm) => {
   const API_URL = process.env.REACT_APP_API_URL;
-  const path = '/v1/oauth/login';
+  const path = '/v1/post/save';
 
   try {
+    console.log(`postPageWrite ${API_URL}${path}: body:${JSON.stringify(pageWriteForm)}`)
     const response = await fetch(`${API_URL}${path}`, {
       method: 'POST',
       credentials: 'include', // include, *same-origin, omit

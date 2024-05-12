@@ -1,14 +1,18 @@
 package com.sinam7.studywithkookmin.service;
 
-import com.sinam7.studywithkookmin.dto.PostCreationDto;
-import com.sinam7.studywithkookmin.dto.PostDto;
-import com.sinam7.studywithkookmin.dto.PostUpdateDto;
+import com.sinam7.studywithkookmin.dto.post.PostBriefDto;
+import com.sinam7.studywithkookmin.dto.post.PostCreationDto;
+import com.sinam7.studywithkookmin.dto.post.PostDto;
+import com.sinam7.studywithkookmin.dto.post.PostUpdateDto;
 import com.sinam7.studywithkookmin.repository.PostRepository;
 import com.sinam7.studywithkookmin.user.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,13 +25,23 @@ public class PostService {
 
     public Long savePost(PostCreationDto dto) {
         Post post = new Post(
-                accountService.getAccount(dto.getAuthorId()),
+                accountService.getAccount(dto.getAuthorEmail()),
                 dto.getTitle(),
                 dto.getContent(),
-                dto.getTags());
+                dto.getDay(),
+                dto.getTime(),
+                Arrays.stream(dto.getTags()).toList()
+        );
 
         Post save = postRepository.save(post);
         return save.getId();
+    }
+
+    public List<PostBriefDto> getPostList() {
+        List<Post> all = postRepository.findAll();
+        List<PostBriefDto> ret = new ArrayList<>();
+        for (Post p : all) ret.add(PostBriefDto.convertToDto(p));
+        return ret;
     }
 
     public PostDto getPost(Long postId) {

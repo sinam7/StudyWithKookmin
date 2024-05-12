@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {COLOR_BACKGROUND_BLUE, COLOR_BORDER_BLUE} from "../config/Constant";
 
 const StyledInput = styled.input`
-    width: 30vh;
+    width: ${(width) => width ? width : "30vh"};;
     height: 20px;
     padding: 8px 16px;
     border-color: ${COLOR_BORDER_BLUE};
@@ -11,7 +11,7 @@ const StyledInput = styled.input`
 `
 
 export default function Input(props) {
-    const { id, placeholder, value, onChange, onKeyDown } = props;
+    const { id, placeholder, value, onChange, onKeyDown, width } = props;
 
     return <StyledInput
         id={id}
@@ -19,5 +19,6 @@ export default function Input(props) {
         onChange={onChange}
         placeholder={placeholder}
         onKeyDown={onKeyDown}
+        width={width}
     ></StyledInput>
 }

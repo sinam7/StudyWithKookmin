@@ -39,6 +39,10 @@ public class AccountService {
         return accountRepository.findById(id).orElse(null);
     }
 
+    public Account getAccount(String email) {
+        return accountRepository.findByEmail(email).orElse(null);
+    }
+
     public String loginOAuthGoogle(IdTokenRequestDto requestBody) {
         Account account = verifyIDToken(requestBody.getIdToken());
         if (account == null) {

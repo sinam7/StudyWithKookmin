@@ -13,6 +13,7 @@ const Container = styled.div`
     border-width: 3px;
     border-style: solid;
     border-radius: 5px;
+    cursor: pointer;
 `
 
 const Title = styled.span`
@@ -25,13 +26,13 @@ const Text = styled.span``
 
 
 export default function Card(props) {
-    const {title, time, tags} = props
+    const {title, time, day, tags, onClick} = props
     // console.log(tags)
 
     return (
-        <Container>
+        <Container onClick={onClick}>
             <Title>{title}</Title>
-            <Text>{time}</Text>
+            <Text>{day}, {time}</Text>
             <TagContainer data={tags}/>
         </Container>
     )
