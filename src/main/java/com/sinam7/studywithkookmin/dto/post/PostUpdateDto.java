@@ -1,4 +1,4 @@
-package com.sinam7.studywithkookmin.dto;
+package com.sinam7.studywithkookmin.dto.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,11 +12,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class PostCreationDto {
+public class PostUpdateDto {
 
     private String title;
     private String content;
+    private String day;
+    private String time;
     private List<String> tags;
-    private Long authorId;
 
 }
