@@ -57,7 +57,7 @@ export default function PostWritePage({isLogin}) {
             authorEmail: info.email
         }
         console.log(form);
-        postPageWrite(form).then(r => navigate("/main")) // todo navigate("posts/r.body like this")
+        postPageWrite(form).then(r => navigate("/main"))
 
     }
 

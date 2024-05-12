@@ -5,7 +5,6 @@ import com.sinam7.studywithkookmin.dto.post.PostCreationDto;
 import com.sinam7.studywithkookmin.dto.post.PostDto;
 import com.sinam7.studywithkookmin.dto.post.PostUpdateDto;
 import com.sinam7.studywithkookmin.service.PostService;
-import com.sinam7.studywithkookmin.user.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
