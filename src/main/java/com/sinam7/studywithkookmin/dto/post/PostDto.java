@@ -36,7 +36,7 @@ public class PostDto {
                 .tags(post.getTags())
                 .createDate(post.getCreateDate())
                 .lastModifiedDate(post.getLastModifiedDate())
-                .authorName(post.getAuthor().getFirstName() + post.getAuthor().getLastName())
+                .authorName(post.getAuthor().getFirstName() + " " + post.getAuthor().getLastName())
                 .build();
     }
 

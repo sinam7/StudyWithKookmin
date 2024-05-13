@@ -7,67 +7,71 @@ import {COLOR_BORDER_BLUE} from "../config/Constant";
 import DateTime from "../component/DateTime";
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  border-color: ${COLOR_BORDER_BLUE};
-  margin: 5px;
-  border-width: 3px;
-  border-style: solid;
-  border-radius: 5px;
-  width: 80vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-color: ${COLOR_BORDER_BLUE};
+    margin: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px;
+    width: 80vh;
 
-  & > {
-    :not(:last-child) {
-      margin-bottom: 16px;
+    & > {
+        :not(:last-child) {
+            margin-bottom: 16px;
+        }
     }
-  }
 
-  & > hr {
-    width: 100%;
-    border: 0;
-    height: 1px;
-    background: ${COLOR_BORDER_BLUE};
-  }
+    & > hr {
+        width: 100%;
+        border: 0;
+        height: 1px;
+        background: ${COLOR_BORDER_BLUE};
+    }
 `
 
 const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `
 
 const Title = styled.div`
-  font-weight: bold; // bold
-  font-size: xx-large;
-  align-content: center;
+    font-weight: bold; // bold
+    font-size: xx-large;
+    align-content: center;
 `
 
 
 
-const Content = styled.div`
-  // font-weight: 400;
+const Content = styled.textarea`
+    // font-weight: 400;
+    height: 40vh;
+    resize: none;
+    border: none;
+    color: black;
 `
 
 const Footer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `
 const WishTime = styled.div`
-  //font-size: smaller;
-  color: dimgrey;
+    //font-size: smaller;
+    color: dimgrey;
 `
 
 const Tags = styled.div`
-  font-size: small;
-  color: dimgrey;
+    font-size: small;
+    color: dimgrey;
 `
 
 const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 `
 
 export default function PostViewPage({isLogin}) {
@@ -111,7 +115,7 @@ export default function PostViewPage({isLogin}) {
                 {dateInfo}
             </Header>
             <hr/>
-            <Content>{post.content}</Content>
+            <Content disabled value={post.content}/>
             <hr/>
             <Footer>
                 <WishTime>{post.day}, {post.time}</WishTime>
