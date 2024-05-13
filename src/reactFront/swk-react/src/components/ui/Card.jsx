@@ -5,11 +5,11 @@ import TagContainer from "./TagContainer";
 
 const Container = styled.div`
     display: flex;
-    width: 30vh;
+    //width: 40vh;
     flex-direction: column;
     border-color: ${COLOR_BORDER_BLUE};
     margin: 5px;
-    padding: 5px;
+    padding: 8px;
     border-width: 3px;
     border-style: solid;
     border-radius: 5px;
@@ -33,6 +33,7 @@ export default function Card(props) {
         <Container onClick={onClick}>
             <Title>{title}</Title>
             <Text>{day}, {time}</Text>
+            <span><br/></span>
             <TagContainer data={tags}/>
         </Container>
     )

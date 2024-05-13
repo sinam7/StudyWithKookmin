@@ -1,10 +1,12 @@
-export const getPostList = async () => {
+export const getPostList = async (queryString) => {
     const API_URL = process.env.REACT_APP_API_URL;
     const path = '/v1/post';
 
     console.log(`getPostList ${API_URL}${path}`)
     try {
-        const response = await fetch(`${API_URL}${path}`, {
+        let input = `${API_URL}${path}`;
+        if (queryString !== undefined) input += `?search=${queryString}`;
+        const response = await fetch(input, {
             headers: {
                 'Content-Type': 'application/json',
                 Accept: 'application/json',

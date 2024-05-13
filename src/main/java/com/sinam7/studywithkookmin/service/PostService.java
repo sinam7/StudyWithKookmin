@@ -7,6 +7,7 @@ import com.sinam7.studywithkookmin.dto.post.PostUpdateDto;
 import com.sinam7.studywithkookmin.repository.PostRepository;
 import com.sinam7.studywithkookmin.user.Post;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -37,9 +39,16 @@ public class PostService {
         return save.getId();
     }
 
-    public List<PostBriefDto> getPostList() {
-        List<Post> all = postRepository.findAll();
+    public List<PostBriefDto> getPostList(String query) {
+        List<Post> all;
+        if (!query.isBlank()) {
+            List<String> queryTagsList = Arrays.stream(query.split(",")).map(String::strip).toList();
+            all = postRepository.findByTagsIn(queryTagsList);
+        } else {
+            all = postRepository.findAll();
+        }
         List<PostBriefDto> ret = new ArrayList<>();
+
         for (Post p : all) ret.add(PostBriefDto.convertToDto(p));
         return ret;
     }

@@ -24,8 +24,8 @@ public class PostController {
     }
 
     @GetMapping
-    public List<PostBriefDto> getPostList() {
-        return postService.getPostList();
+    public List<PostBriefDto> getPostList(@RequestParam(value="search", required = false) String query) {
+        return postService.getPostList(query);
     }
 
     @GetMapping("/{postId}")

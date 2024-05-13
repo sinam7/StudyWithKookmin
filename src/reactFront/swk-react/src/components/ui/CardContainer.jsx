@@ -5,10 +5,13 @@ import {useNavigate} from "react-router-dom";
 import {getPostList} from "../api/getPostList";
 
 const Container = styled.div`
-    display: inline-block;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    //grid-gap: 10px;
+    //width: 50%;
 `
 
-export default function CardContainer({isLogin}) {
+export default function CardContainer({isLogin, searchButton, setSearchButton, searchValue}) {
 
     const navigate = useNavigate()
     const [postList, setPostList] = useState([])
@@ -17,12 +20,13 @@ export default function CardContainer({isLogin}) {
         if (!isLogin) navigate('/')
 
         const initPostList = async () => {
-            const postList = await getPostList();
+            const postList = await getPostList(searchValue);
             setPostList(postList);
+            setSearchButton(false);
             console.log(postList)
         };
         initPostList();
-    }, [isLogin, navigate]);
+    }, [isLogin, navigate, searchButton]);
 
     return (
         <Container>
