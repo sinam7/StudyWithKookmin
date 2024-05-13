@@ -8,18 +8,24 @@ import Textarea from "../ui/Textarea";
 import TagInput from "../component/TagInput";
 import {postPageWrite} from "../api/postPageWrite";
 import {getUserInfo} from "../api/getUserInfo";
+import {COLOR_BORDER_BLUE} from "../config/Constant";
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 20px;
-
-    & {
+    border-color: ${COLOR_BORDER_BLUE};
+    margin: 5px;
+    padding: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px;
+    & > {
         :not(:last-child) {
             margin-bottom: 16px;
         }
     }
 `
+
 
 const ButtonWrapper = styled.div`
     display: flex;

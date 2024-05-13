@@ -24,6 +24,7 @@ public class PostDto {
     private List<String> tags;
     private String authorName;
     private Timestamp createDate;
+    private Timestamp lastModifiedDate;
 
     public static PostDto convertToDto(Post post) {
         return PostDto.builder()
@@ -34,6 +35,7 @@ public class PostDto {
                 .time(post.getTime())
                 .tags(post.getTags())
                 .createDate(post.getCreateDate())
+                .lastModifiedDate(post.getLastModifiedDate())
                 .authorName(post.getAuthor().getFirstName() + post.getAuthor().getLastName())
                 .build();
     }

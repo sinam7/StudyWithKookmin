@@ -1,17 +1,16 @@
 import React from "react";
-import Input from "../ui/Input";
 import styled from "styled-components";
 import {COLOR_BORDER_BLUE} from "../config/Constant";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  margin: 0 20px;
   border: ${COLOR_BORDER_BLUE};
 
   & {
     :not(:last-child) {
-      margin-bottom: 16px;
+      padding: 20px 20px 0;
     }
   }
 `
