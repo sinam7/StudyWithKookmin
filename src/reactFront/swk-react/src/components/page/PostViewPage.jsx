@@ -4,57 +4,53 @@ import {useNavigate, useParams} from "react-router-dom";
 import styled from "styled-components";
 import {getPost} from "../api/getPost";
 import {COLOR_BORDER_BLUE} from "../config/Constant";
+import DateTime from "../component/DateTime";
 
 const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border-color: ${COLOR_BORDER_BLUE};
-    margin: 5px;
-    border-width: 3px;
-    border-style: solid;
-    border-radius: 5px;
-    width: 80vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-color: ${COLOR_BORDER_BLUE};
+  margin: 5px;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 5px;
+  width: 80vh;
 
-    & > {
-        :not(:last-child) {
-            margin-bottom: 16px;
-        }
+  & > {
+    :not(:last-child) {
+      margin-bottom: 16px;
     }
-  
-    & > hr {
-      width: 100%;
-      border: 0;
-      height: 1px;
-      background: ${COLOR_BORDER_BLUE};
-    }
+  }
+
+  & > hr {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background: ${COLOR_BORDER_BLUE};
+  }
 `
 
 const Header = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `
 
 const Title = styled.div`
-    font-weight: bold; // bold
+  font-weight: bold; // bold
   font-size: xx-large;
   align-content: center;
 `
 
-const Metadata1 = styled.div`
-    display: flex;
-  flex-direction: column;
-  font-weight: 200;
-  color: dimgrey;
-`
+
 
 const Content = styled.div`
-    // font-weight: 400;
+  // font-weight: 400;
 `
 
 const Footer = styled.div`
-    display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 `
@@ -69,9 +65,9 @@ const Tags = styled.div`
 `
 
 const ButtonWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 `
 
 export default function PostViewPage({isLogin}) {
@@ -91,14 +87,18 @@ export default function PostViewPage({isLogin}) {
         createDate: "",
         lastModifiedDate: "",
     })
+    const [dateInfo, setDateInfo] = useState();
 
     useEffect(() => {
         if (!isLogin) navigate('/')
 
         const initPost = async () => {
             const newPost = await getPost(postId);
-            setPost(newPost);
             console.log(newPost)
+            setPost(newPost);
+            setDateInfo(<DateTime createDate={newPost.createDate}
+                                  lastModifiedDate={newPost.lastModifiedDate}
+                                  authorName={newPost.authorName}/>)
         };
         initPost();
     }, [isLogin, navigate, postId]);
@@ -108,14 +108,7 @@ export default function PostViewPage({isLogin}) {
         <Wrapper>
             <Header>
                 <Title>{post.title}</Title>
-                <Metadata1>
-                    Created at: {post.createDate}<br/>
-                    {/*{post.createDate !== post.lastModifiedDate &&*/}
-                    {/*    <span>Last Modified: {post.lastModifiedDate}</span>}*/}
-                    {/*<br/>*/}
-                    Last Modified: {post.lastModifiedDate}<br/>
-                    Author: {post.authorName}
-                </Metadata1>
+                {dateInfo}
             </Header>
             <hr/>
             <Content>{post.content}</Content>
